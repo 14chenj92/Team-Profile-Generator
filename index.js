@@ -24,7 +24,7 @@ const managerquestions = [
             return true;
         } else {
             console.log('Enter employee ID!');
-            return false;
+            return false; 
         }}
     },
     {
@@ -99,6 +99,57 @@ const engineerquestions = [
             return true;
         } else {
             console.log('Enter the Github username!');
+            return false;
+        }}
+    },
+]
+
+const internquestions = [
+    {
+        type: 'input',
+        name: 'name',
+        message: 'What is the intern name?',
+        validate: nameinput => {            
+            if (nameinput) {
+            return true;
+        } else {
+            console.log('Enter the intern name!');
+            return false;
+        }}
+    },
+    {
+        type: 'input',
+        name: 'ID',
+        message: 'What is the intern ID?',
+        validate: IDinput => {            
+            if (IDinput) {
+            return true;
+        } else {
+            console.log('Enter intern ID!');
+            return false;
+        }}
+    },
+    {
+        type: 'input',
+        name: 'email',
+        message: 'What is their email address?',
+        validate: emailinput => {            
+                if (emailinput) {
+                return true;
+        } else {
+                console.log('Enter an email address!');
+                return false;
+        }}
+    },
+    {
+        type: 'input',
+        name: 'school',
+        message: 'What is their school name?',
+        validate: schoolinput => {            
+            if (schoolinput) {
+            return true;
+        } else {
+            console.log('Enter the school name!');
             return false;
         }}
     },
