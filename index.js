@@ -163,7 +163,7 @@ const writeToFile = data => {
             console.log(error);
             return;
         } else {
-            console.log("Your team profile has been created!")
+            console.log('Your team profile has been created!')
         }
     })
 }; 
