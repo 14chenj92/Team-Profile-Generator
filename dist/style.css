@@ -16,3 +16,11 @@ img {
 .card {
     background-color: lightblue;
 }
+
+.card-header {
+    background-color: lightslategray;
+}
+
+body {
+    background-color: blanchedalmond;
+}
