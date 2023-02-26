@@ -1,4 +1,4 @@
-
+// creates cards for roles
 const managercard = data => { return data.map(manager => {
   return `
   <div class="col-3 mt-4">
@@ -53,6 +53,7 @@ const interncard = data => { return data.map(intern => {
   `
 })}
 
+// pushes cards depending on role
 generateHTML = (cardarray) => {
   let cards = [];
   const manager = cardarray.filter(data => {
@@ -78,6 +79,7 @@ generateHTML = (cardarray) => {
 
 module.exports = generateHTML;
 
+// html layout
 module.exports = cards => {  
     return`
   <!DOCTYPE html>

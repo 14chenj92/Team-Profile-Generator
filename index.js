@@ -6,7 +6,7 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 
 teamarray = [];
-
+// prompt for choosing role
 function teamprompts() {
     inquirer.prompt({
      type: 'list',
@@ -34,7 +34,7 @@ function teamprompts() {
     }
     )}
     
-    
+// prompt for manager role
 function managerquestions() {
     return inquirer.prompt ([
     {
@@ -93,6 +93,7 @@ function managerquestions() {
     }
     )}
 
+// prompt for engineer role
 function engineerquestions() {
     return inquirer.prompt ([
     {
@@ -151,6 +152,7 @@ function engineerquestions() {
     }
     )}
 
+// prompt for intern role
 function internquestions() {
         return inquirer.prompt ([
         {
@@ -209,7 +211,7 @@ function internquestions() {
     }
     )}
     
-
+// creates html file
 function htmlfile() {
     const writeToFile = generateHTML(teamarray);
     fs.writeFile('index.html', writeToFile, error => {

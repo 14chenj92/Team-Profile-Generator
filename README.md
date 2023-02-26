@@ -39,10 +39,17 @@ THEN I exit the application, and the HTML is generated
 ```
 
   ## Installation
-  
+  * clone repository
+  * download node.js 
+  * install inquirer and jest packages
+  * input node index in terminal
 
   ## Usage
   Link to Video: 
+  https://drive.google.com/file/d/14nIV7Xxxm_5y0jdWxzJx5Bb2gTsZ-I4n/view
+
+  <img src="/images/samplevid.gif">
+
 
   ## License
   MIT License
