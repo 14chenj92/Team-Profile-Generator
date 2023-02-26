@@ -1,0 +1,9 @@
+.header {
+    background-color: blueviolet;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    color: white;
+}

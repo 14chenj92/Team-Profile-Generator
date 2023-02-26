@@ -1,8 +1,22 @@
 const fs = require('fs');
 const inquirer = require('inquirer'); 
-const generateHTML = require('./generateHTML');
+const generateHTML = require('./generateHTML.js');
+const Intern = require('../lib/Intern');
+const Manager = require('../lib/Manager');
+const Engineer = require('../lib/Engineer');
 
-const managerquestions = [
+teamarray = [];
+
+const teamprompts = () => {
+    inquirer.prompt({
+     type: 'list',
+     name: 'employeelist',
+     message: "What team member would you like to add?",
+     choices: ['Manager', 'Engineer', 'Intern', 'I finished adding team members'],
+    })
+
+    if (employeelist === 'Manager') {
+    return inquirer.prompt ([
     {
         type: 'input',
         name: 'name',
@@ -41,7 +55,7 @@ const managerquestions = [
     },
     {
         type: 'input',
-        name: 'office number',
+        name: 'officennumber',
         message: 'What is their office number?',
         validate: officeinput => {            
             if (officeinput) {
@@ -51,13 +65,20 @@ const managerquestions = [
             return false;
         }}
     },
-]
+    ])
+    .then((data) => {
+        const manager = new Manager(data.name, data.ID, data.email, data.officenumber)
+        this.teamarray.push(manager);
+        this.teamprompts();
+    }
+    )}
 
-const engineerquestions = [
+    if (employeelist === 'Engineer') {
+    return inquirer.prompt ([
     {
         type: 'input',
         name: 'name',
-        message: 'What is the enigineer name?',
+        message: 'What is the engineer name?',
         validate: nameinput => {            
             if (nameinput) {
             return true;
@@ -101,11 +122,18 @@ const engineerquestions = [
             console.log('Enter the Github username!');
             return false;
         }}
-    },
-]
+    }
+    ])
+    .then((data) => {
+        const engineer = new Engineer(data.name, data.ID, data.email, data.username)
+        this.teamarray.push(engineer);
+        this.teamprompts();
+    }
+    )}
 
-const internquestions = [
-    {
+    if (employeelist === 'Intern') {
+        return inquirer.prompt ([
+        {
         type: 'input',
         name: 'name',
         message: 'What is the intern name?',
@@ -153,12 +181,19 @@ const internquestions = [
             return false;
         }}
     },
-]
+    ])
+    .then((data) => {
+        const intern = new Intern(data.name, data.ID, data.email, data.school)
+        this.teamarray.push(intern);
+        this.teamprompts();
+    }
+    )};
 
 
 
-const writeToFile = data => {
-    fs.writeFile('index.html', data, error => {
+    if (employeelist === 'I finished adding team members') {
+    const writeToFile = generateHTML(this.teamarray);
+    fs.writeFile('index.html', writeToFile, error => {
         if (error) {
             console.log(error);
             return;
@@ -166,20 +201,13 @@ const writeToFile = data => {
             console.log('Your team profile has been created!')
         }
     })
-}; 
-
-// starts app
-function init() {
-    return inquirer.prompt(managerquestions);
+    }; 
 }
 
-function init1() {
-    return inquirer.prompt(engineerquestions);
-}
+
 
 // function to call app
-init()
-.then (init1)
+teamprompts()
 .then(data => {
     return generateHTML(data);
 })
