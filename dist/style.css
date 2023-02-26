@@ -1,9 +1,18 @@
 .header {
-    background-color: blueviolet;
+    background-color: skyblue;
 }
 
 h1 {
     display: flex;
     justify-content: center;
-    color: white;
+    color: black;
+}
+
+img {
+    width: 20%;
+    height: 20%;
+}
+
+.card {
+    background-color: lightblue;
 }
